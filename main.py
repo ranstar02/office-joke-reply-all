@@ -12,6 +12,9 @@ OUTPUT_PATHS = ["/output/entry.txt", "./output/entry.txt"]
 def main():
     assert 1 <= len(ENTRY) <= 199, "ENTRY must be 1-199 characters"
     assert ENTRY.strip(), "ENTRY must not be only whitespace"
+    # One line is the whole point of this competition: the judge compares
+    # single lines, so any line break would split the joke and break the gate.
+    assert "\n" not in ENTRY and "\r" not in ENTRY, "ENTRY must be a single line (no newline characters)"
 
     last_error = None
     for path in OUTPUT_PATHS:
